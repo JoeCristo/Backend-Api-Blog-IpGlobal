@@ -57,7 +57,7 @@ class Post
      * @Assert\Valid
      * @Groups({"form:posts"})
      */
-    private $author;
+    private Author $author;
 
     public function getId(): int
     {
