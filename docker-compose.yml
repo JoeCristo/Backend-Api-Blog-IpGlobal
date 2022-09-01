@@ -24,14 +24,7 @@ services:
         UID: $U_ID
     volumes:
       - ./:/appdata/www
-    ###> XDEBUG 3 ###
-    # Use your client IP here
-    # Linux: run "ip a | grep docker0"
-    # Windows (with WSL2) and Mac: host.docker.internal
-    environment:
-      XDEBUG_CLIENT_HOST: 172.17.0.1
-      XDEBUG_CLIENT_PORT: 9003
-      PHP_IDE_CONFIG: serverName=docker-dev-env-for-symfony
+
     networks:
       - docker-dev-env-for-symfony-network
 
@@ -42,7 +35,7 @@ services:
     ports:
       - 10000:3306
     environment:
-      MYSQL_DATABASE: database
+      MYSQL_DATABASE: db_posts
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - docker-dev-env-for-symfony-db-data:/var/lib/mysql
