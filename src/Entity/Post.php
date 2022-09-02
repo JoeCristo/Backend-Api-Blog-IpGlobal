@@ -59,6 +59,13 @@ class Post
      */
     private Author $author;
 
+    public function __construct(string $title, string $content, Author $author)
+    {
+        $this->title = $title;
+        $this->content = $content;
+        $this->author = $author;
+    }
+
     public function getId(): int
     {
         return $this->id;
