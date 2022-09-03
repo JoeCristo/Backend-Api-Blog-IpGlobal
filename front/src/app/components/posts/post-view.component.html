@@ -1,0 +1,34 @@
+<div class="row mt-4" style="margin-top: 5rem !important">
+  <div class="col-md-12 text-right">
+    <button class="btn btn-sm btn-secondary" [routerLink]="['/post']">
+      Volver
+    </button>
+  </div>
+</div>
+
+<div style="margin-top: 2rem">
+  <h3>{{ post.title }}</h3>
+
+  <hr />
+
+  <div class="row">
+    <div class="col-md-12">
+      {{ post.content }}
+    </div>
+  </div>
+
+  <div class="row" style="margin-top: 5rem !important">
+    <div class="col-md-12">
+      <b
+        ><i
+          >({{
+            post.author.name +
+              (post.author.surname ? " " + post.author.surname : " ")
+          }})</i
+        ></b
+      >
+    </div>
+  </div>
+
+  <br />
+</div>

@@ -1,0 +1,168 @@
+<h3>
+  <small>{{ post.title }}</small>
+</h3>
+
+<hr />
+
+<div
+  *ngIf="statusOK"
+  class="alert alert-success alert-dismissible fade show"
+  role="alert"
+>
+  Se han guardado los datos correctamente.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="row mt-4 mb-4" style="margin-top: 50px !important">
+  <div class="col-md-12 text-right">
+    <button class="btn btn-sm btn-secondary" [routerLink]="['/post']">
+      Volver
+    </button>
+    <button
+      *ngIf="id !== 'new'"
+      class="btn btn-sm btn-outline-success ml-2"
+      (click)="addNew(form)"
+    >
+      Nuevo
+    </button>
+  </div>
+</div>
+
+<div class="row animated fadeIn fast">
+  <div class="col-md-12">
+    <form (ngSubmit)="savePost(form)" #form="ngForm" class="form-group">
+      <div class="form-group row">
+        <label for="title" class="col-sm-3 col-form-label">Título</label>
+
+        <div class="col-lg-8 col-sm-8">
+          <input
+            [(ngModel)]="post.title"
+            #title="ngModel"
+            type="text"
+            name="title"
+            id="title"
+            class="form-control"
+            required
+            minlength="5"
+          />
+
+          <div
+            *ngIf="title.errors && (title.dirty || title.touched)"
+            class="form-control-feeback"
+          >
+            <div [hidden]="!title.errors.title" class="msg-danger-form mt-2">
+              * Campo requerido.
+            </div>
+            <div
+              [hidden]="!title.errors.minlength"
+              class="msg-danger-form mt-2"
+            >
+              * Error
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="content" class="col-sm-3 col-form-label">Contenido</label>
+
+        <div class="col-lg-8 col-sm-8">
+          <input
+            [(ngModel)]="post.content"
+            #content="ngModel"
+            pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.([a-zA-Z]{2,4})+$"
+            type="text"
+            id="content"
+            name="content"
+            class="form-control"
+            required
+          />
+
+          <div
+            *ngIf="content.errors && (content.dirty || content.touched)"
+            class="form-control-feeback"
+          >
+            <div
+              [hidden]="!content.errors.required"
+              class="msg-danger-form mt-2"
+            >
+              * Campo requerido.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="name" class="col-sm-3 col-form-label">Nombre autor</label>
+
+        <div class="col-lg-8 col-sm-8">
+          <input
+            [(ngModel)]="post.author.name"
+            #name="ngModel"
+            pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.([a-zA-Z]{2,4})+$"
+            type="text"
+            id="name"
+            name="name"
+            class="form-control"
+            required
+          />
+
+          <div
+            *ngIf="name.errors && (name.dirty || name.touched)"
+            class="form-control-feeback"
+          >
+            <div [hidden]="!name.errors.required" class="msg-danger-form mt-2">
+              * Campo requerido.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="surname" class="col-sm-3 col-form-label"
+          >Apellido autor</label
+        >
+        <div class="col-lg-8 col-sm-8">
+          <input
+            [(ngModel)]="post.author.surname"
+            #surname="ngModel"
+            pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.([a-zA-Z]{2,4})+$"
+            type="text"
+            id="surname"
+            name="surname"
+            class="form-control"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="category" class="col-sm-3 col-form-label">Categoría</label>
+
+        <div class="col-lg-8 col-sm-8">
+          <select
+            [(ngModel)]="post.category"
+            #captation="ngModel"
+            name="category"
+            class="form-control"
+            id="category"
+            required
+          >
+            <option value="" selected>Seleccione el tipo</option>
+            <option value="PROBLEM_SOLUTION">Problema-solución</option>
+            <option value="TUTORIAL">Tutoriales</option>
+            <option value="TRENDS">Tendencias</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 col-form-label"></label>
+
+        <button type="submit" class="btn btn-primary btn-save">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>

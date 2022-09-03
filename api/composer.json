@@ -13,6 +13,7 @@
         "doctrine/orm": "^2.13",
         "fresh/doctrine-enum-bundle": "7.2",
         "friendsofphp/php-cs-fixer": "^3.11",
+        "nelmio/cors-bundle": "^2.2",
         "symfony/asset": "5.4.*",
         "symfony/console": "5.4.*",
         "symfony/doctrine-bridge": "5.4.*",
