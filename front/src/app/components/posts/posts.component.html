@@ -52,25 +52,32 @@
               "
             >
               <td>{{ posts[key].title }}</td>
-              <td>{{ posts[key].author.name }}</td>
+              <td>
+                {{
+                  posts[key].author.name +
+                    (posts[key].author.surname
+                      ? " " + posts[key].author.surname
+                      : "")
+                }}
+              </td>
               <td>{{ getCategory(posts[key].category) }}</td>
               <td class="text-right">
                 <button
-                  [routerLink]="['/post', key, 'view']"
+                  [routerLink]="['/post', posts[key].id, 'view']"
                   type="button"
                   class="btn btn-sm btn-outline-primary"
                 >
                   Ver
                 </button>
                 <button
-                  [routerLink]="['/post', key]"
+                  [routerLink]="['/post', posts[key].id]"
                   type="button"
                   class="btn btn-sm btn-outline-warning ml-1"
                 >
                   Editar
                 </button>
                 <button
-                  (click)="deletePost(key)"
+                  (click)="deletePost(posts[key].id, i)"
                   type="button"
                   class="btn btn-sm btn-outline-danger ml-1"
                 >

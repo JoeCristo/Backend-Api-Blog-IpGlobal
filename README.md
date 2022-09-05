@@ -1,18 +1,19 @@
-# App Blog from IpGlobal
+# App Blog para IpGlobal
 
 ## Docker
-
-### Contenido:
-
-- NGINX 1.19
-- PHP 8.0.1
-- MySQL 8.0
 
 ### Instalación:
 
 - `make build` para crear todos los contenedores
 - `make start`
 - `make ssh-be` para entrar en el contenedor php
+
+### Contenido y desarrollo:
+
+- NGINX 1.19
+- PHP 8.0.1
+- MySQL 8.0
+- Aunque trabajo actualmente en entorno con Docker, no lo implementé yo. Así que he tenido algunos problemas con ello, como la configuración del nginx, o la creación de la BBDD con doctrine:database:create, por ejemplo.
 
 ## Api
 
@@ -31,8 +32,8 @@
 - He creado solo una entidad, Post. Le he añadido algunos campos, de los cuales, categoría y autor, en un entorno más real, serían tablas diferentes, con sus relaciones con el post.
   Pero por no complicarme y por falta de tiempo, he creado un Enum y un tipo Embeddable respectivamente.
 
-- He añadido un Validator y un Servicio (muy tontos), que comprueba si un post existe con el mismo título, y de ser así no deja crear o editar dicho post. He decidido no meter la lógica que comprueba en el validator y sacarlo a un servicio, porque ese servicio lo podemos utilizar en cualquier otro sitio.
-- Con los tests unitarios, no sabía muy bien que hacer. Ya que, al tener api-platform, y con la lógica que habéis pedido, tampoco podía hacer mucho más, o eso creo yo!. Pero he hecho alguno muy muy básico.
+- He añadido un Validator y un Servicio (muy tontos), que comprueba si un post existe con el mismo título, y de ser así no deja crear o editar dicho post. He decidido no meter la lógica que comprueba en el validator y sacarlo a un servicio, porque ese servicio lo podemos utilizar en cualquier otro sitio (esto, al ser solo un campo lo podría haber definido como 'unique', pero era por meter algo más para la prueba).
+- Con los tests unitarios, no sabía muy bien que hacer. Ya que, al tener api-platform, y con la lógica que habéis pedido, tampoco podía hacer mucho más, o eso creo yo!. Pero he hecho alguno muy muy básico. Así como del servicio que comprueba si existe un post.
 
 - Php-stan ejecutado con su maximo nivel.
 

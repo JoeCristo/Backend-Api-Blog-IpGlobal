@@ -25,6 +25,8 @@ export class PostComponent implements OnInit {
   id: string = "";
   private form: any;
   statusOK: boolean = false;
+  statusError: boolean = false;
+  messageError: string = "";
 
   constructor(
     private postsService: PostsService,
@@ -61,7 +63,7 @@ export class PostComponent implements OnInit {
 
         this.statusOK = true;
       },
-      error: (error) => console.error(error),
+      error: (error) => alert(error.error.detail),
     });
   }
 
@@ -72,7 +74,7 @@ export class PostComponent implements OnInit {
 
         this.statusOK = true;
       },
-      error: (error) => console.error(error),
+      error: (error) => alert(error.error.detail),
     });
   }
 
@@ -92,6 +94,7 @@ export class PostComponent implements OnInit {
           this.post.category = data.category;
           this.post.author = data.author;
         },
+        error: (error) => alert(error.error.detail),
       });
     }
   }

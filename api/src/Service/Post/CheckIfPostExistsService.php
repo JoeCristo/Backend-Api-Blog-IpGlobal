@@ -2,6 +2,7 @@
 
 namespace App\Service\Post;
 
+use App\Entity\Post;
 use App\Repository\PostRepository;
 
 class CheckIfPostExistsService
@@ -13,12 +14,12 @@ class CheckIfPostExistsService
         $this->postRepository = $postRepository;
     }
 
-    public function __invoke(string $title): bool
+    public function exists(string $title): bool
     {
-        $post = $this->postRepository->findBy([
-            'title' => $title
+        $posts = $this->postRepository->findBy([
+            'title' => $title,
         ]);
 
-        return $post ? true : false;
+        return $posts && count($posts) >= 1;        
     }
 }

@@ -16,24 +16,18 @@ export class PostsService implements OnInit {
 
   createPost(post: Post): Observable<Post> {
     delete post.id;
-    const DATA_CREATE = JSON.stringify(post);
 
     return this.httpClient.post<Post>(this.baseUrl, post);
   }
 
   updatePost(post: Post, id: string): Observable<Post> {
-    const DATA_UPDATE = JSON.stringify(post);
-
-    const realId = (parseInt(id) + 1).toString();
-    const url = `${this.baseUrl}/${realId}`;
+    const url = `${this.baseUrl}/${id}`;
 
     return this.httpClient.put<Post>(url, post);
   }
 
   getPost(id: string): Observable<Post> {
-    const realId = (parseInt(id) + 1).toString();
-
-    const url = `${this.baseUrl}/${realId}`;
+    const url = `${this.baseUrl}/${id}`;
 
     return this.httpClient.get<Post>(url);
   }
@@ -43,8 +37,7 @@ export class PostsService implements OnInit {
   }
 
   deletePost(id: string): Observable<void> {
-    const realId = (parseInt(id) + 1).toString();
-    const url = `${this.baseUrl}/${realId}`;
+    const url = `${this.baseUrl}/${id}`;
 
     return this.httpClient.delete<void>(url);
   }

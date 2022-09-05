@@ -28,12 +28,12 @@ export class PostsComponent implements OnInit {
 
   ngOnInit() {}
 
-  deletePost(id: string) {
-    this.postsService.deletePost(id).subscribe({
+  deletePost(id: any, index: number) {
+    this.postsService.deletePost(id.toString()).subscribe({
       next: (data) => {
         this.statusOK = true;
 
-        this.posts.splice(parseInt(id), 1);
+        this.posts.splice(index, 1);
       },
     });
   }
