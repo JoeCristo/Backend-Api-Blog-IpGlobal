@@ -3,34 +3,34 @@
 namespace App\Tests\Entity;
 
 use App\DBAL\Types\PostCategoryType;
-use PHPUnit\Framework\TestCase;
-use App\Tests\Mother\PostMother;
 use App\Tests\Mother\AuthorMother;
+use App\Tests\Mother\PostMother;
+use PHPUnit\Framework\TestCase;
 
 class PostTest extends TestCase
 {
-    public function test_if_post_has_been_created(): void
+    public function testIfPostHasBeenCreated(): void
     {
         $post = PostMother::getValidPost();
 
-        $this->assertEquals(true, $post->getTitle() === 'Calendario editorial para tu blog: como crearlo');
+        $this->assertEquals(true, 'Calendario editorial para tu blog: como crearlo' === $post->getTitle());
     }
 
-    public function test_if_author_name_is_empty(): void
+    public function testIfAuthorNameIsEmpty(): void
     {
         $author = AuthorMother::getAuthorEmptyName();
 
         $this->assertEmpty($author->getName());
     }
 
-    public function test_if_post_category_is_invalid(): void
+    public function testIfPostCategoryIsInvalid(): void
     {
         $post = PostMother::getPostWithInvalidCategory();
 
         $categories = [
             PostCategoryType::PROBLEM_SOLUTION,
             PostCategoryType::TRENDS,
-            PostCategoryType::TUTORIAL
+            PostCategoryType::TUTORIAL,
         ];
 
         $this->assertNotContains($post->getCategory(), $categories);

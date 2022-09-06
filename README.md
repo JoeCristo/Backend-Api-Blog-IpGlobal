@@ -35,7 +35,7 @@
 - He añadido un Validator y un Servicio (muy tontos), que comprueba si un post existe con el mismo título, y de ser así no deja crear o editar dicho post. He decidido no meter la lógica que comprueba en el validator y sacarlo a un servicio, porque ese servicio lo podemos utilizar en cualquier otro sitio (esto, al ser solo un campo lo podría haber definido como 'unique', pero era por meter algo más para la prueba).
 - Con los tests unitarios, no sabía muy bien que hacer. Ya que, al tener api-platform, y con la lógica que habéis pedido, tampoco podía hacer mucho más, o eso creo yo!. Pero he hecho alguno muy muy básico. Así como del servicio que comprueba si existe un post.
 
-- Php-stan ejecutado con su maximo nivel.
+- Php-stan ejecutado con su maximo nivel. En los directorios 'src' y 'tests'
 
 - Php-cd-fixer ejecutado en modo symfony
 

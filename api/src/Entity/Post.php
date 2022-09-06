@@ -2,15 +2,14 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
+use App\Validator\Post\CheckIfPostExists;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\Column;
-use App\Repository\PostRepository;
 use Doctrine\ORM\Mapping\Embedded;
-use App\Validator\Post\CheckIfPostExists;
-use ApiPlatform\Core\Annotation\ApiResource;
+use Fresh\DoctrineEnumBundle\Validator\Constraints as DoctrineAssert;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
-use Fresh\DoctrineEnumBundle\Validator\Constraints as DoctrineAssert;
 
 /**
  * @ApiResource()

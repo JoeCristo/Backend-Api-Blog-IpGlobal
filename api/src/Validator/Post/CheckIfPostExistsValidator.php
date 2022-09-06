@@ -2,9 +2,8 @@
 
 namespace App\Validator\Post;
 
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Validator\Constraint;
 use App\Service\Post\CheckIfPostExistsService;
+use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
 /**
@@ -12,6 +11,8 @@ use Symfony\Component\Validator\ConstraintValidator;
  */
 class CheckIfPostExistsValidator extends ConstraintValidator
 {
+    public const MESSAGE = 'Ya existe un post con el mismo título.';
+
     private CheckIfPostExistsService $checkIfPostExistsService;
 
     public function __construct(
@@ -20,10 +21,10 @@ class CheckIfPostExistsValidator extends ConstraintValidator
         $this->checkIfPostExistsService = $checkIfPostExistsService;
     }
 
-    public function validate($value, Constraint $constraint)
+    public function validate(mixed $value, Constraint $constraint): void
     {
         if ($this->checkIfPostExistsService->exists($value)) {
-            $this->context->buildViolation('Ya existe un post con el mismo título.')->addViolation();
+            $this->context->buildViolation(self::MESSAGE)->addViolation();
 
             return;
         }

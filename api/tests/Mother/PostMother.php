@@ -3,7 +3,6 @@
 namespace App\Tests\Mother;
 
 use App\Entity\Post;
-use App\Tests\Mother\AuthorMother;
 
 class PostMother
 {
@@ -20,12 +19,12 @@ class PostMother
         return $post;
     }
 
-    static function getValidPost(): Post
+    public static function getValidPost(): Post
     {
         return self::createValidPost();
     }
 
-    static function getPostWithInvalidCategory(): Post
+    public static function getPostWithInvalidCategory(): Post
     {
         return self::getValidPost()
             ->setCategory('LISTS');

@@ -3,9 +3,12 @@
 namespace App\Repository;
 
 use App\Entity\Post;
-use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Persistence\ManagerRegistry;
 
+/**
+ * @extends \Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository<Post>
+ */
 class PostRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)

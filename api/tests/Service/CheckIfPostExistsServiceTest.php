@@ -2,21 +2,21 @@
 
 namespace App\Tests\Service;
 
-use PHPUnit\Framework\TestCase;
 use App\Repository\PostRepository;
 use App\Service\Post\CheckIfPostExistsService;
+use PHPUnit\Framework\TestCase;
 
 class CheckIfPostExistsServiceTest extends TestCase
 {
-    const EXISTS_TITLE_POST = 'Calendario editorial para tu blg';
+    public const EXISTS_TITLE_POST = 'Calendario editorial para tu blg';
 
-    public function test_if_post_dont_exist()
+    public function testIfPostDontExist(): void
     {
         $checkIfPostExistsService = $this->getCheckIfPostExistsService();
 
         $exitsPost = $checkIfPostExistsService->exists(self::EXISTS_TITLE_POST);
 
-        $this->assertEquals(true, $exitsPost === false);
+        $this->assertEquals(true, false === $exitsPost);
     }
 
     private function getCheckIfPostExistsService(): CheckIfPostExistsService
@@ -26,11 +26,11 @@ class CheckIfPostExistsServiceTest extends TestCase
 
     private function getPostRepository(): PostRepository
     {
-        /** @var PostRepository $postRepository */
         $postRepository = $this->getMockBuilder(PostRepository::class)->disableOriginalConstructor()->getMock();
 
         $postRepository->method('findBy')->willReturn(null);
 
+        /* @var PostRepository $postRepository */
         return $postRepository;
     }
 }

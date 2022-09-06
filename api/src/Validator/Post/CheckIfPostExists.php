@@ -9,5 +9,4 @@ use Symfony\Component\Validator\Constraint;
  */
 class CheckIfPostExists extends Constraint
 {
-
 }

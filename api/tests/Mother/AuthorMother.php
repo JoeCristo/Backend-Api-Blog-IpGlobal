@@ -26,12 +26,12 @@ class AuthorMother
             ->setSurname($surname);
     }
 
-    static function getValidAuthor(): Author
+    public static function getValidAuthor(): Author
     {
         return self::createValidAuthor();
     }
 
-    static function getAuthorEmptyName(): Author
+    public static function getAuthorEmptyName(): Author
     {
         return self::createAuthorEmptyName();
     }
