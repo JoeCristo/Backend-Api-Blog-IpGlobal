@@ -13,7 +13,7 @@ class CheckIfPostExistsService
         $this->postRepository = $postRepository;
     }
 
-    public function exists(string|mixed $title): bool
+    public function exists(mixed $title): bool
     {
         $posts = $this->postRepository->findBy([
             'title' => $title,
