@@ -30,7 +30,7 @@ class CheckIfPostExistsServiceTest extends TestCase
 
         $postRepository->method('findBy')->willReturn(null);
 
-        /* @var PostRepository $postRepository */
+        /** @var PostRepository $postRepository */
         return $postRepository;
     }
 }

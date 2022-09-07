@@ -19,8 +19,8 @@ class CheckIfPostExistsService
             'title' => $title,
         ]);
 
-        $countPosts = count($posts);
+        $countPosts = $posts ? count($posts) : 0;
 
-        return $posts && $countPosts > 0;
+        return $countPosts > 0;
     }
 }
